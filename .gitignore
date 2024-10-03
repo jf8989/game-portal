@@ -1,0 +1,67 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js build output
+/.next
+
+# Tailwind CSS build output
+/tailwind.config.js
+/tailwind.config.ts
+
+# Static files
+/out
+
+# Build artifacts
+/build
+
+# Runtime data
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+# Vercel deployment
+.vercel
+
+# IDE specific
+/.vscode
+/.idea
+
+# MacOS specific
+.DS_Store
+
+# Log files
+*.log
+
+# Python related
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+
+# Python environments
+env/
+venv/
+venv.bak/
+
+# Database files
+*.sqlite3
+
+# Custom generated files
+high_scores.json
