@@ -7,6 +7,7 @@ const NumberGuessingGamePage = () => {
   const [message, setMessage] = useState(
     "Select difficulty to begin the game."
   );
+  const [feedbackMessage, setFeedbackMessage] = useState("");
   const [, setAttempts] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [difficulty, setDifficulty] = useState("Easy");
@@ -41,6 +42,7 @@ const NumberGuessingGamePage = () => {
         { difficulty }
       );
       setMessage(response.data.message);
+      setFeedbackMessage(""); // Clear any previous feedback
       setAttempts(0);
       setGameStarted(true);
     } catch {
@@ -50,7 +52,7 @@ const NumberGuessingGamePage = () => {
 
   const handleGuess = async () => {
     if (!guess) {
-      setMessage("Please enter a valid number.");
+      setFeedbackMessage("Please enter a valid number.");
       return;
     }
 
@@ -62,7 +64,7 @@ const NumberGuessingGamePage = () => {
       }>("/api/guess", {
         guess: parseInt(guess),
       });
-      setMessage(response.data.result);
+      setFeedbackMessage(response.data.result);
       setAttempts(response.data.attempts);
       if (response.data.success) {
         setGameStarted(false);
@@ -73,7 +75,7 @@ const NumberGuessingGamePage = () => {
         setGuess("");
       }
     } catch {
-      setMessage("Error submitting guess. Please try again.");
+      setFeedbackMessage("Error submitting guess. Please try again.");
       // Clear the guess input in case of error
       setGuess("");
     }
@@ -88,6 +90,7 @@ const NumberGuessingGamePage = () => {
   const resetGame = () => {
     setGameStarted(false);
     setGuess("");
+    setFeedbackMessage("");
     setMessage("Select difficulty to begin the game.");
   };
 
@@ -106,7 +109,12 @@ const NumberGuessingGamePage = () => {
             </div>
             <div className="divide-y divide-gray-200">
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                {/* Display the initial message */}
                 <p className="text-center font-medium">{message}</p>
+                {/* Display feedback message after each guess */}
+                {feedbackMessage && (
+                  <p className="text-center font-medium">{feedbackMessage}</p>
+                )}
                 {!gameStarted ? (
                   <div className="space-y-4">
                     <div className="flex justify-center space-x-4">
@@ -140,8 +148,13 @@ const NumberGuessingGamePage = () => {
                       onChange={(e) => setGuess(e.target.value)}
                       placeholder="Enter your guess"
                       onKeyPress={handleKeyPress}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50"
+                      className="mt-1 block w-full text-center rounded-md border-gray-300 shadow-sm focus:border-cyan-300 focus:ring focus:ring-cyan-200 focus:ring-opacity-50"
                     />
+                    {/* Inform the user they can press ENTER */}
+                    <p className="text-center text-gray-500 text-sm">
+                      Press <strong>Enter</strong> or click &quot;Submit
+                      Guess&quot; to submit your guess.
+                    </p>
                     <div className="flex justify-center space-x-4">
                       <button
                         onClick={handleGuess}
