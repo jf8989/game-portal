@@ -1,5 +1,5 @@
+//src/app/index.tsx
 import React from "react";
-import Link from "next/link";
 import NumberGuessingGame from "../app/components/NumberGuessingGame";
 import PlaceholderGame1 from "../app/components/PlaceholderGame1";
 import PlaceholderGame2 from "../app/components/PlaceholderGame2";
