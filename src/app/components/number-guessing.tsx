@@ -97,7 +97,7 @@ const NumberGuessingGamePage = () => {
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       {/* Background Gradient */}
-      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto px-4 sm:px-0">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         {/* Main Content */}
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 z-10">
@@ -117,7 +117,7 @@ const NumberGuessingGamePage = () => {
                 )}
                 {!gameStarted ? (
                   <div className="space-y-4">
-                    <div className="flex justify-center space-x-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-2 sm:space-y-0">
                       {["Easy", "Medium", "Hard"].map((level) => (
                         <label key={level} className="inline-flex items-center">
                           <input
@@ -134,7 +134,7 @@ const NumberGuessingGamePage = () => {
                     <div className="text-center">
                       <button
                         onClick={startGame}
-                        className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50"
+                        className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50 w-full sm:w-auto"
                       >
                         Start Game
                       </button>
@@ -155,16 +155,16 @@ const NumberGuessingGamePage = () => {
                       Press <strong>Enter</strong> or click &quot;Submit
                       Guess&quot; to submit your guess.
                     </p>
-                    <div className="flex justify-center space-x-4">
+                    <div className="flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-2 sm:space-y-0">
                       <button
                         onClick={handleGuess}
-                        className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50"
+                        className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50 w-full sm:w-auto"
                       >
                         Submit Guess
                       </button>
                       <button
                         onClick={resetGame}
-                        className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+                        className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 w-full sm:w-auto"
                       >
                         Change Difficulty
                       </button>
@@ -174,7 +174,7 @@ const NumberGuessingGamePage = () => {
               </div>
               <div className="pt-6 text-base text-gray-500 leading-6 font-bold sm:text-lg sm:leading-7">
                 <p className="text-center">High Scores</p>
-                <div className="mt-2 flex justify-between text-sm">
+                <div className="mt-2 flex flex-col sm:flex-row justify-between items-center sm:space-x-4 space-y-2 sm:space-y-0 text-sm">
                   <span>Easy: {highScores.Easy}</span>
                   <span>Medium: {highScores.Medium}</span>
                   <span>Hard: {highScores.Hard}</span>
