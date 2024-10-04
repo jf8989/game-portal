@@ -42,9 +42,9 @@ def start_game(settings: GameSettings):
     if settings.difficulty == "Easy":
         settings.min_value, settings.max_value = 1, 100
     elif settings.difficulty == "Medium":
-        settings.min_value, settings.max_value = 1, 500
-    elif settings.difficulty == "Hard":
         settings.min_value, settings.max_value = 1, 1000
+    elif settings.difficulty == "Hard":
+        settings.min_value, settings.max_value = 1, 10000
     
     if settings.min_value >= settings.max_value:
         raise HTTPException(status_code=400, detail="Invalid range. Minimum value must be less than maximum value.")

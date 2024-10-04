@@ -1,4 +1,4 @@
-// src/app/components/NumberGuessingGamePage.tsx
+// src/app/components/number-guessing.tsx
 import React, { useState, useEffect, KeyboardEvent } from "react";
 import axios from "axios";
 
